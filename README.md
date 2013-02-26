@@ -2,7 +2,7 @@
 
   						*********************************** Documentation Of Extension *******************************************
 
-The Yii-Image-Zoomer is a extension which consists of two type of image zoom.They are:
+The Yii-Image-Zoomer is an Yii extension which consists of two type of image zoom.They are:
 1) Single Image Zoom: This type of zoom is used when you want to apply zoom effect on single image.
 2) Multi-image Zoom: This type of zoom is used when you want to apply zoom effect on Multiple images .
 
@@ -24,8 +24,8 @@ Tested on the following Yii Versions:
 2) Copy the "spinner.gif" image which comes with this extension into _[/images]_ .This image is used by script .The folder or directory "images" is created by default when you create a new yii application, it is located at "yourapplicationwebroot/images"
 	For Example: Let's say your application name is "Music_Cart" , than the images folder is located at -[Music_Cart/images].	
 				 Directory Structure will be like :  - - Music_Cart/
-																- - - images/
-																		--- spinner.gif
+										- - - images/
+											--- spinner.gif
 
 											
 3) To use YII-IMAGE-ZOOMER in a page, include the following code in the page:
