@@ -1,8 +1,8 @@
-************************************************************** Version 1.0 -- First Release *************************************************************** 
+\************************************************************** Version 1.0 -- First Release *************************************************************** 
 
-  						*********************************** Documentation Of Extension *******************************************
+							*********************************** Documentation Of Extension *******************************************
 
-The Yii-Image-Zoomer is an Yii extension which consists of two type of image zoom.They are:
+The Yii-Image-Zoomer is a extension which consists of two type of image zoom.They are:
 1) Single Image Zoom: This type of zoom is used when you want to apply zoom effect on single image.
 2) Multi-image Zoom: This type of zoom is used when you want to apply zoom effect on Multiple images .
 
@@ -24,8 +24,8 @@ Tested on the following Yii Versions:
 2) Copy the "spinner.gif" image which comes with this extension into _[/images]_ .This image is used by script .The folder or directory "images" is created by default when you create a new yii application, it is located at "yourapplicationwebroot/images"
 	For Example: Let's say your application name is "Music_Cart" , than the images folder is located at -[Music_Cart/images].	
 				 Directory Structure will be like :  - - Music_Cart/
-										- - - images/
-											--- spinner.gif
+																- - - images/
+																		--- spinner.gif
 
 											
 3) To use YII-IMAGE-ZOOMER in a page, include the following code in the page:
@@ -38,9 +38,8 @@ Tested on the following Yii Versions:
 					'multiple_zoom'=>false,
 					'imagefolder'=>'images',
 					'single_image'=>array(
-							'image_url'=>'millasmall.jpg',
-							'image_name'=>'hayden',
-							'image_large_url'=>'hayden.jpg',
+							'image'=>'millasmall.jpg',
+							'image_large'=>'hayden.jpg',
 							'image_alt'=>'Hayden',	
 							'image_desc'=>'Hayden'
 
@@ -76,26 +75,23 @@ Tested on the following Yii Versions:
 					'imagefolder'=>'images',
 					'images'=>array(
 							array(
-							'image_url'=>'haydensmall.jpg',
-							'image_name'=>'hayden',
-							'image_large_url'=>'hayden.jpg',
-							'image_thumb_url'=>'hayden_tmb.jpg',
+							'image'=>'haydensmall.jpg',
+							'image_large'=>'hayden.jpg',
+							'image_thumb'=>'hayden_tmb.jpg',
 							'image_alt'=>'Hayden',	
 							'image_desc'=>'Hayden'),
 
 							array(
-							'image_url'=>'millasmall.jpg',
-							'image_name'=>'Milla',
-							'image_large_url'=>'milla.jpg',
-							'image_thumb_url'=>'milla_tmb.jpg',
+							'image'=>'millasmall.jpg',
+							'image_large'=>'milla.jpg',
+							'image_thumb'=>'milla_tmb.jpg',
 							'image_alt'=>'Milla',	
 							'image_desc'=>'MIlla'),
 
 							array(
-							'image_url'=>'millasmall.jpg',
-							'image_name'=>'Milla',
-							'image_large_url'=>'milla.jpg',
-							'image_thumb_url'=>'milla_tmb.jpg',
+							'image'=>'millasmall.jpg',
+							'image_large'=>'milla.jpg',
+							'image_thumb'=>'milla_tmb.jpg',
 							'image_alt'=>'Milla',	
 							'image_desc'=>'MIlla'),
 							
@@ -227,17 +223,17 @@ Tested on the following Yii Versions:
 			single_image= 	@var array - this is where you specify the image for single image zoom 
 							@default: empty array
 							* This parameter is an array which further containes Sub-Parameters,they are listed below *
-								'image_url'= It specifies the  specifies name of zoomable image (Example: 'hayden.jpg')
-								'image_large_url'= It specifies the name of the magnified image. 
+								'image'= It specifies the  specifies name of zoomable image (Example: 'hayden.jpg')
+								'image_large'= It specifies the name of the magnified image. 
 												   This should be a larger, higher resolution 
 												   version of the original image (Example:hayden_large.jpg).
 								'image_alt'= It specifies the image alt text	
 								'image_desc'= It specifies the image decription to be displayed
 								
 							Example :  'single_image'=>array(
-															'image_url'=>'millasmall.jpg',
-															'image_name'=>'hayden',
-															'image_large_url'=>'hayden.jpg',
+															'image'=>'millasmall.jpg',
+															'image'=>'hayden',
+															'image_large'=>'hayden.jpg',
 															'image_alt'=>'Hayden',	
 															'image_desc'=>'Hayden'				
 															)
@@ -248,11 +244,11 @@ Tested on the following Yii Versions:
 			images= 		@var array - this is where you specify the image for single image zoom 
 							@default: empty array
 							* This parameter is an two-dimentional array  which further containes Sub-Parameters,they are listed below *
-								'image_url'= It specifies the  specifies name of zoomable image (Example: 'hayden.jpg')
-								'image_large_url'= It specifies the name of the magnified image. 
+								'image'= It specifies the  specifies name of zoomable image (Example: 'hayden.jpg')
+								'image_large'= It specifies the name of the magnified image. 
 												   This should be a larger, higher resolution 
 												   version of the original image (Example:hayden_large.jpg).
-								'image_thumb_url'= It specifies the name of the thumb image (Example: hayden_thumb.jpg)
+								'image_thumb'= It specifies the name of the thumb image (Example: hayden_thumb.jpg)
 													This should be a smaller, lower resolution 
 												   version of the original image (Example:hayden_thumb.jpg).
 								'image_alt'= It specifies the image alt text
@@ -260,23 +256,23 @@ Tested on the following Yii Versions:
 								
 							Example: 'images'=>array(
 														array(
-														'image_url'=>'haydensmall.jpg',
-														'image_large_url'=>'hayden.jpg',
-														'image_thumb_url'=>'hayden_tmb.jpg',
+														'image'=>'haydensmall.jpg',
+														'image_large'=>'hayden.jpg',
+														'image_thumb'=>'hayden_tmb.jpg',
 														'image_alt'=>'Hayden',	
 														'image_desc'=>'Hayden'),
 
 														array(
-														'image_url'=>'millasmall.jpg',
-														'image_large_url'=>'milla.jpg',
-														'image_thumb_url'=>'milla_tmb.jpg',
+														'image'=>'millasmall.jpg',
+														'image_large'=>'milla.jpg',
+														'image_thumb'=>'milla_tmb.jpg',
 														'image_alt'=>'Milla',	
 														'image_desc'=>'MIlla'),
 
 														array(
-														'image_url'=>'millasmall.jpg',
-														'image_large_url'=>'milla.jpg',
-														'image_thumb_url'=>'milla_tmb.jpg',
+														'image'=>'millasmall.jpg',
+														'image_large'=>'milla.jpg',
+														'image_thumb'=>'milla_tmb.jpg',
 														'image_alt'=>'Milla',	
 														'image_desc'=>'MIlla'),					
 													),
