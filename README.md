@@ -241,7 +241,8 @@ Tested on the following Yii Versions:
 
 2) Specific Parameters of Multi-image zoom:
 	All the parameters are same but only one parameter is different in Multi-Image zoom as compare to single image zoom .It is listed below:
-			images= 		@var array - this is where you specify the image for single image zoom 
+		
+		images= 		@var array - this is where you specify the image for single image zoom 
 							@default: empty array
 							* This parameter is an two-dimentional array  which further containes Sub-Parameters,they are listed below *
 								'image'= It specifies the  specifies name of zoomable image (Example: 'hayden.jpg')
