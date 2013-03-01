@@ -1,9 +1,12 @@
-\************************************************************** Version 1.0 -- First Release *************************************************************** 
+**************************************************************** Version 1.0 -- First Release *********************************************************************
 
-							*********************************** Documentation Of Extension *******************************************
+	
+						********************** Documentation Of The Extension **************************
 
 The Yii-Image-Zoomer is a extension which consists of two type of image zoom.They are:
+
 1) Single Image Zoom: This type of zoom is used when you want to apply zoom effect on single image.
+
 2) Multi-image Zoom: This type of zoom is used when you want to apply zoom effect on Multiple images .
 
 Yii-Image Zoomer uses Featured Image Zoomer v2.1 script from http://www.dynamicdrive.com/dynamicindex4/featuredzoomer.htm
@@ -14,15 +17,21 @@ Yii-Image Zoomer uses Featured Image Zoomer v2.1 script from http://www.dynamicd
 ##Requirements
 
  Yii 1.1x
+
 Tested on the following Yii Versions:
- Version : 1.1.13,1.1.12,1.1.11,1.1.10,1.1.9,1.1.8 and 1.1.7
+
+Version : 1.1.13,1.1.12,1.1.11,1.1.10,1.1.9,1.1.8 and 1.1.7
 
 
 ##Setup
 
 1) Extract the downloaded file and put the extracted extension files into _[protected/extensions]_ folder of your Yii application.
+   Rename the folder from "YiiImageZoomer-master" to "YiiImageZoomer".
+   
 2) Copy the "spinner.gif" image which comes with this extension into _[/images]_ .This image is used by script .The folder or directory "images" is created by default when you create a new yii application, it is located at "yourapplicationwebroot/images"
+	
 	For Example: Let's say your application name is "Music_Cart" , than the images folder is located at -[Music_Cart/images].	
+				 
 				 Directory Structure will be like :  - - Music_Cart/
 																- - - images/
 																		--- spinner.gif
@@ -34,7 +43,7 @@ Tested on the following Yii Versions:
 
 		<?php
 		
-		 	$this->widget('ext.Yii-Image-Zoomer.YiiImageZoomer',array(
+		 	$this->widget('ext.YiiImageZoomer.YiiImageZoomer',array(
 					'multiple_zoom'=>false,
 					'imagefolder'=>'images',
 					'single_image'=>array(
@@ -70,7 +79,7 @@ Tested on the following Yii Versions:
 
 		<?php
 		
-		 	$this->widget('ext.Yii-Image-Zoomer.YiiImageZoomer',array(
+		 	$this->widget('ext.YiiImageZoomer.YiiImageZoomer',array(
 					'multiple_zoom'=>true,
 					'imagefolder'=>'images',
 					'images'=>array(
@@ -218,6 +227,7 @@ Tested on the following Yii Versions:
 
 
 2) Specific Parameters of single image zoom:
+	
 	All the parameters are same but only one parameter is different in single image zoom as compare to multi-image zoom .It is listed below:
 			
 			single_image= 	@var array - this is where you specify the image for single image zoom 
@@ -240,6 +250,7 @@ Tested on the following Yii Versions:
 															
 
 2) Specific Parameters of Multi-image zoom:
+	
 	All the parameters are same but only one parameter is different in Multi-Image zoom as compare to single image zoom .It is listed below:
 		
 		images= 		@var array - this is where you specify the image for single image zoom 
@@ -278,4 +289,13 @@ Tested on the following Yii Versions:
 														'image_desc'=>'MIlla'),					
 													),
 				
-				*********************************** Documentation Of Extension Ends Here*******************************************
+				
+
+
+
+
+
+
+
+
+	*********************************** Documentation Of Extension Ends Here*******************************************
