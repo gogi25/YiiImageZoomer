@@ -233,16 +233,30 @@ class YiiImageZoomer extends CWidget
 			//if the user want to use multi-image zoom and call the function related to multiple zoom
 	        if($this->multiple_zoom!==FALSE)
 			{
-			echo $this->build_multiple_images();
-			$options = $this->build_js_options();
-			$cs->registerScript($this->name,"jQuery('#multizoom1').addimagezoom($options);",CClientScript::POS_READY );
+				echo $this->build_multiple_images();
+				$options = $this->build_js_options();
+				$jsCode = <<<SETUP
+function bindZoom() {
+        jQuery('#image1').addimagezoom($options);
+        }
+bindZoom();
+SETUP;
+				//> register jsCode
+				$cs->registerScript($this->name, $jsCode, CClientScript::POS_READY);
+
 			}
 			//else user want to use single image zoom
 			else
 			{
 				echo $this->build_single_image();
 				$options = $this->build_js_options();
-				$cs->registerScript($this->name,"jQuery('#image1').addimagezoom($options);",CClientScript::POS_READY );
+				$jsCode = <<<SETUP
+function bindZoom() {
+        jQuery('#image1').addimagezoom($options)
+        }
+bindZoom();
+SETUP;
+				$cs->registerScript($this->name,$jsCode,CClientScript::POS_READY );
 			}	     
         }
 		//else exception will be thrown 
@@ -328,9 +342,9 @@ class YiiImageZoomer extends CWidget
 			}
 			//generate the html to display
 			$html='<div class="targetarea">';
-			$html.='<img id="multizoom1" alt="'.$this->images['0']['image_alt'].'" title=" " src="'.Yii::app()->baseUrl.'/'.$this->imagefolder.'/'.$this->images['0']['image'].'"/></div>';
+			$html.='<img id="image1" alt="'.$this->images['0']['image_alt'].'" title=" " src="'.Yii::app()->baseUrl.'/'.$this->imagefolder.'/'.$this->images['0']['image'].'"/></div>';
 			$html.='<div id="'.$this->descArea.'">'.$this->images['0']['image_desc'].'</div>';
-			$html.='<div class="multizoom1 thumbs">';
+			$html.='<div class="image1 thumbs">';
 			
 			//loop through the images to fetch image based data  and genrate the html to display
 			foreach($this->images as $image)
