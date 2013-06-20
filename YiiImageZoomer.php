@@ -210,7 +210,7 @@ class YiiImageZoomer extends CWidget
 	* .it specifies the description area or we can say that the container
 	*  where the image description will be displayed.
 	*/
-	public $targetArea='targetarea';
+	public $css_target='targetarea';
 
 	/**  
 	* @var array $js_options- array used internally in the class for storing the javascript options which are passed to the script later on. 
@@ -297,7 +297,7 @@ SETUP;
 				//if the image file exists than generate the html string and return it
 				if(file_exists(Yii::getPathOfAlias('webroot') .'/'.$this->imagefolder. '/'.$this->single_image['image']))
 				{
-					$html='<div class="'.$this->targetArea.'">';
+					$html='<div class="'.$this->css_target.'">';
 					$html.= '<img src="'.Yii::app()->baseUrl.'/'.$this->imagefolder.'/'.$this->single_image['image'].'"  id="image1" /> </div>';
 					$html.='<div id="'.$this->descArea.'">'.$this->single_image['image_desc'].'</div>';
 					return $html;
@@ -354,7 +354,7 @@ SETUP;
 				}
 			}
 			//generate the html to display
-			$html='<div class="targetarea">';
+			$html='<div class="'.$this->css_target.'">';
 			$html.='<img id="image1" alt="'.$this->images['0']['image_alt'].'" title=" " src="'.Yii::app()->baseUrl.'/'.$this->imagefolder.'/'.$this->images['0']['image'].'"/></div>';
 			$html.='<div id="'.$this->descArea.'">'.$this->images['0']['image_desc'].'</div>';
 			$html.='<div class="'.$this->css_thumbs.'">';
