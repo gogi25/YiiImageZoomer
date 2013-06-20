@@ -45,9 +45,9 @@ class YiiImageZoomer extends CWidget
 	
 	/** 
 	* @var string $imagefolder - used to specify the images folder path
-	* @default : "/images"
+	* @default : "images"
 	*/
-   	public $imagefolder='/images';
+   	public $imagefolder='images';
     
 	/** 
 	* @var boolean $cursorshade - used to enable or disable cursor shade
@@ -178,6 +178,12 @@ class YiiImageZoomer extends CWidget
 	*/
 	public $single_image=array();
 
+	/**
+	* @var array $single_image- this is where you specify the image for single image zoom
+	* @default: empty array
+	*/
+	public $css_thumbs = "thumbs";
+
 	
 	//Below are the parameters which cannot be customized and these are meant to be used within the class
 		
@@ -197,8 +203,15 @@ class YiiImageZoomer extends CWidget
 	* .it specifies the description area or we can say that the container 
 	*  where the image description will be displayed.
 	*/
-	private $descArea='description';
-	
+	public $descArea='description';
+
+	/**
+	* @var string $targetArea- string variable used internally in the class
+	* .it specifies the description area or we can say that the container
+	*  where the image description will be displayed.
+	*/
+	public $css_target='targetarea';
+
 	/**  
 	* @var array $js_options- array used internally in the class for storing the javascript options which are passed to the script later on. 
 	*/
@@ -233,16 +246,30 @@ class YiiImageZoomer extends CWidget
 			//if the user want to use multi-image zoom and call the function related to multiple zoom
 	        if($this->multiple_zoom!==FALSE)
 			{
-			echo $this->build_multiple_images();
-			$options = $this->build_js_options();
-			$cs->registerScript($this->name,"jQuery('#multizoom1').addimagezoom($options);",CClientScript::POS_READY );
+				echo $this->build_multiple_images();
+				$options = $this->build_js_options();
+				$jsCode = <<<SETUP
+function bindZoom() {
+        jQuery('#image1').addimagezoom($options);
+        }
+bindZoom();
+SETUP;
+				//> register jsCode
+				$cs->registerScript($this->name, $jsCode, CClientScript::POS_READY);
+
 			}
 			//else user want to use single image zoom
 			else
 			{
 				echo $this->build_single_image();
 				$options = $this->build_js_options();
-				$cs->registerScript($this->name,"jQuery('#image1').addimagezoom($options);",CClientScript::POS_READY );
+				$jsCode = <<<SETUP
+function bindZoom() {
+        jQuery('#image1').addimagezoom($options)
+        }
+bindZoom();
+SETUP;
+				$cs->registerScript($this->name,$jsCode,CClientScript::POS_READY );
 			}	     
         }
 		//else exception will be thrown 
@@ -265,12 +292,12 @@ class YiiImageZoomer extends CWidget
 		if(!empty($this->single_image))
 		{
 			//if the imageFolder exists  
-			if(is_dir($this->imagefolder))
+			if(is_dir(Yii::getPathOfAlias('webroot') .'/'.$this->imagefolder))
 			{	
 				//if the image file exists than generate the html string and return it
 				if(file_exists(Yii::getPathOfAlias('webroot') .'/'.$this->imagefolder. '/'.$this->single_image['image']))
 				{
-					$html='<div class="targetarea">';
+					$html='<div class="'.$this->css_target.'">';
 					$html.= '<img src="'.Yii::app()->baseUrl.'/'.$this->imagefolder.'/'.$this->single_image['image'].'"  id="image1" /> </div>';
 					$html.='<div id="'.$this->descArea.'">'.$this->single_image['image_desc'].'</div>';
 					return $html;
@@ -327,10 +354,10 @@ class YiiImageZoomer extends CWidget
 				}
 			}
 			//generate the html to display
-			$html='<div class="targetarea">';
-			$html.='<img id="multizoom1" alt="'.$this->images['0']['image_alt'].'" title=" " src="'.Yii::app()->baseUrl.'/'.$this->imagefolder.'/'.$this->images['0']['image'].'"/></div>';
+			$html='<div class="'.$this->css_target.'">';
+			$html.='<img id="image1" alt="'.$this->images['0']['image_alt'].'" title=" " src="'.Yii::app()->baseUrl.'/'.$this->imagefolder.'/'.$this->images['0']['image'].'"/></div>';
 			$html.='<div id="'.$this->descArea.'">'.$this->images['0']['image_desc'].'</div>';
-			$html.='<div class="multizoom1 thumbs">';
+			$html.='<div class="'.$this->css_thumbs.'">';
 			
 			//loop through the images to fetch image based data  and genrate the html to display
 			foreach($this->images as $image)
